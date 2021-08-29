@@ -1,0 +1,65 @@
+from pygame import *
+import sys
+
+def pintar_boton(screen,boton,palabra):
+
+init()
+screen = display.set_mode((1280,720))
+mixer.init()
+sound_heli = mixer.Sound("sound_heli.wav")
+fondo1 = image.load('Fondo1.jpg')
+heli = image.load('Heli.png')
+intro1 = image.load('INTRO1.png')
+transform.scale(fondo1,(1280,720))
+transform.scale(heli,(128,72))
+transform.scale(intro1,(128,72))
+font = font.SysFont("Castellar",30)
+
+x, y = 100,100
+
+facilb = Rect(515,288,250,120)
+mediob = Rect(515,432,250,120)
+dificilb = Rect(515,576,250,120)
+instb = Rect(956,576,300,120)
+while True:
+    screen.blit(fondo1,(0,0))
+    for e in event.get():
+        if e.type == QUIT: sys.exit()
+#         if e.type == MOUSEBUTTONDOWN and e.button==1:
+    if facilb.collidepoint(mouse.get_pos()):
+        draw.rect(screen,(255, 255, 255), facilb,0)
+    else:
+        draw.rect(screen,(105,173,90), facilb,0)
+    if mediob.collidepoint(mouse.get_pos()):
+        draw.rect(screen,(255, 255, 255), mediob,0)
+    else:
+        draw.rect(screen,(105,173,90), mediob,0)
+    if dificilb.collidepoint(mouse.get_pos()):
+        draw.rect(screen,(255, 255, 255), dificilb,0)
+    else:
+        draw.rect(screen,(105,173,90), dificilb,0)
+    if instb.collidepoint(mouse.get_pos()):
+        draw.rect(screen,(255, 255, 255), instb,0)
+    else:
+        draw.rect(screen,(105,173,90), instb,0)
+    facilt = font.render("Fácil", True, (0,0,0))
+    mediot = font.render("Medio", True, (0,0,0))
+    dificilt = font.render("Difícil", True, (0,0,0))
+    instt = font.render("Instrucciones", True, (0,0,0))
+    screen.blit(facilt, (515+(facilb.width-facilt.get_width())/2,288+(facilb.height-facilt.get_height())/2))
+    screen.blit(mediot, (515+(mediob.width-mediot.get_width())/2,432+(mediob.height-mediot.get_height())/2))
+    screen.blit(dificilt, (515+(dificilb.width-dificilt.get_width())/2,576+(dificilb.height-dificilt.get_height())/2))
+    screen.blit(instt, (956+(instb.width-instt.get_width())/2,576+(instb.height-instt.get_height())/2))
+     if aceptar.collidepoint(mouse.get_pos()):
+#         draw.rect
+if key.get_pressed()[K_s]:
+y += 5
+if key.get_pressed()[K_w]:
+y -= 5
+if key.get_pressed()[K_a]:
+x -= 5
+if key.get_pressed()[K_d]:
+x += 5
+#     screen.blit(heli,(x,y))
+#     sound_heli.play() 
+    display.flip()
